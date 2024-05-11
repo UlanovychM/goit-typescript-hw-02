@@ -1,0 +1,25 @@
+.wrap {
+	position: sticky;
+	right: 0;
+	top: 0;
+	z-index: 1;
+	background-color: #3f51b5;
+}
+.form {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding: 8px;
+}
+
+.btn {
+	width: 100px;
+	height: 30px;
+	margin-left: 15px;
+	margin-top: 2px;
+}
+
+.input {
+	font: inherit;
+	padding: 4px;
+}

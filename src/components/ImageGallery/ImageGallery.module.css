@@ -1,0 +1,10 @@
+.list {
+	display: flex;
+	flex-wrap: wrap;
+
+	gap: 24px;
+}
+.item {
+	display: flex;
+	gap: 20px;
+}
