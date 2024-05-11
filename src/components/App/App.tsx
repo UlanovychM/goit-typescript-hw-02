@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ScrollToOptions } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import fetchImageApi from '../services/gallery-api';
 import { Toaster } from 'react-hot-toast';
 import css from './App.module.css';
@@ -20,13 +20,13 @@ function App() {
 	const [error, setError] = useState<boolean>(false);
 	const [loadBtn, setLoadBtn] = useState<boolean>(false);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
-	const [selectedImage, setSelectedImage] = useState<object>();
+	const [selectedImage, setSelectedImage] = useState<object>({});
 
 	useEffect(() => {
 		Modal.setAppElement('#root');
 	}, []);
 
-	const imageRef = useRef<HTMLElement>();
+	const imageRef = useRef<HTMLDivElement>();
 
 	const handleScroll = () => {
 		if (!imageRef.current) {
