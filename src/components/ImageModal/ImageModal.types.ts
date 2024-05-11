@@ -10,5 +10,5 @@ type data = {
 export interface ImagePropsModal {
 	isOpen: boolean;
 	data: data;
-	onClose: (image: string) => void;
+	onClose: () => void;
 }
