@@ -26,7 +26,7 @@ function App() {
 		Modal.setAppElement('#root');
 	}, []);
 
-	const imageRef = useRef<HTMLDivElement>();
+	const imageRef = useRef<HTMLUListElement>(null);
 
 	const handleScroll = () => {
 		if (!imageRef.current) {
@@ -40,7 +40,6 @@ function App() {
 			window.scrollTo({
 				top: y,
 				behavior: 'smooth',
-				block: 'start',
 			});
 		}
 	};
@@ -53,7 +52,7 @@ function App() {
 		if (valueSearch.trim() === '') {
 			return;
 		}
-		const getData = async () => {
+		const getData = async (): Promise<void> => {
 			try {
 				setLoader(true);
 				const { data, total_pages } = await fetchImageApi(valueSearch, page);

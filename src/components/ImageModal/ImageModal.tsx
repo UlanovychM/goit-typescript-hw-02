@@ -10,7 +10,7 @@ const ImageModal: FC<ImagePropsModal> = ({
 		urls: { regular },
 		alt_description,
 	},
-}) => {
+}): JSX.Element => {
 	return (
 		<Modal
 			isOpen={isOpen}

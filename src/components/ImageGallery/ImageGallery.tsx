@@ -1,9 +1,9 @@
-import { FC, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import ImageCard from '../ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 import { ImageGalleryProps } from './ImageGallery.type';
 
-const ImageGallery: FC<ImageGalleryProps> = forwardRef(
+const ImageGallery = forwardRef<HTMLUListElement, ImageGalleryProps>(
 	({ images, onOpen }, ref): JSX.Element => {
 		return (
 			<>
