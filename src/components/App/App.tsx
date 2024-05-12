@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import fetchImageApi from '../services/gallery-api';
 import { Toaster } from 'react-hot-toast';
 import css from './App.module.css';
-import { Images } from './App.types';
+import { DataRequest, Images } from './App.types';
 
 import SearchBar from '../SearchBar/SearchBox';
 import Modal from 'react-modal';
@@ -20,7 +20,7 @@ function App() {
 	const [error, setError] = useState<boolean>(false);
 	const [loadBtn, setLoadBtn] = useState<boolean>(false);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
-	const [selectedImage, setSelectedImage] = useState<object>({});
+	const [selectedImage, setSelectedImage] = useState<Images | null>(null);
 
 	useEffect(() => {
 		Modal.setAppElement('#root');
@@ -55,11 +55,11 @@ function App() {
 		const getData = async (): Promise<void> => {
 			try {
 				setLoader(true);
-				const { data, total_pages } = await fetchImageApi(valueSearch, page);
+				const data: DataRequest = await fetchImageApi(valueSearch, page);
 				setImages(prevData => {
-					return [...prevData, ...data];
+					return [...prevData, ...data.results];
 				});
-				if (data.length > 0 || total_pages < 12) {
+				if (data.results.length > 0 || data.total_pages < 12) {
 					setLoadBtn(true);
 				}
 			} catch (e) {
@@ -87,7 +87,7 @@ function App() {
 		}
 	};
 
-	const openModal = (image: object) => {
+	const openModal = (image: Images) => {
 		setIsOpen(true);
 		setSelectedImage(image);
 	};
@@ -102,7 +102,7 @@ function App() {
 				{images.length > 0 && (
 					<ImageGallery images={images} onOpen={openModal} ref={imageRef} />
 				)}
-				{selectedImage.urls && (
+				{selectedImage && (
 					<ImageModal
 						isOpen={isOpen}
 						onClose={closeModal}

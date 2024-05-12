@@ -1,14 +1,10 @@
-type urls = {
-	regular: string;
-};
-
-type data = {
-	urls: urls;
-	alt_description: string;
-};
-
 export interface ImagePropsModal {
 	isOpen: boolean;
-	data: data;
+	data: {
+		urls: {
+			regular: string;
+		};
+		alt_description: string;
+	};
 	onClose: () => void;
 }

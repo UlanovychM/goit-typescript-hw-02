@@ -19,10 +19,7 @@ const fetchImageApi = async (stringValue: string, pageNumber: number) => {
 	if (!response.data.total) {
 		toast.error('On this value, images no found');
 	}
-	return {
-		data: response.data.results,
-		total_pages: response.data.total_pages,
-	};
+	return response.data;
 };
 
 export default fetchImageApi;
