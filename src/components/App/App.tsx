@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import ImageModal from '../ImageModal/ImageModal';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
-import Loader from '../Loader/Loader';
+import LoaderSpinner from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 function App() {
@@ -97,7 +97,7 @@ function App() {
 		<>
 			<div className={css.container}>
 				<SearchBar onSearch={handelSearch} />
-				{loader && <Loader />}
+				{loader && <LoaderSpinner />}
 
 				{images.length > 0 && (
 					<ImageGallery images={images} onOpen={openModal} ref={imageRef} />
